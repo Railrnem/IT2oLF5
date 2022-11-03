@@ -34,8 +34,14 @@ GROUP BY r.REZEPTNAME
 HAVING sum(z.KALORIEN) <= 500;
 
 /* Auswahl aller Rezepte, die weniger als fünf Zutaten enthalten */
-
+SELECT rz.REZEPTNR, r.REZEPTNAME, r.Ernaehrungskategorien, r.Unvertraeglichkeiten, sum(rz.MENGE)  FROM krautundrueben.REZEPT AS r
+INNER JOIN krautundrueben.REZEPTZUTAT AS rz ON r.REZEPTNR = rz.REZEPTNR
+GROUP BY rz.REZEPTNR
+HAVING sum(rz.MENGE) < 7;
 
 
 /* Auswahl aller Rezepte, die weniger als fünf Zutaten enthalten und eine bestimmte Ernährungskategorie erfüllen */
-
+SELECT rz.REZEPTNR, r.REZEPTNAME, r.Ernaehrungskategorien, r.Unvertraeglichkeiten, sum(rz.MENGE)  FROM krautundrueben.REZEPT AS r
+INNER JOIN krautundrueben.REZEPTZUTAT AS rz ON r.REZEPTNR = rz.REZEPTNR
+GROUP BY rz.REZEPTNR
+HAVING sum(rz.MENGE) < 7 AND r.Ernaehrungskategorien = 'Vegan';
