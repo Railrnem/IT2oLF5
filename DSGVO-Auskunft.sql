@@ -1,0 +1,5 @@
+SELECT * from krautundrueben.KUNDE
+WHERE KUNDENID = 2001;
+
+SELECT * from krautundrueben.BESTELLUNG
+WHERE KUNDENID = 2001;
